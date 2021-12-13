@@ -12,7 +12,7 @@ Upcoming Meetups
 {% block body %}
     <div class="row">
     {% for meetup_item in meetups %}
-         {% include "meetup/includes/meetup-item.html" with title=meetup_item.title location='' slug=meetup_item.slug %}
+         {% include "meetup/includes/meetup-item.html" with title=meetup_item.title image=meetup_item.image.url location='' slug=meetup_item.slug %}
     {% endfor %}
     </div>
 
