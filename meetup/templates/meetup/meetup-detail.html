@@ -2,7 +2,7 @@
 {%load static%}
 
 {% block title %}
-    {{ meetup_title }}
+    {{ meetup.title }}
 {% endblock %}
 
 {% block site_css %}{% endblock %}
@@ -13,10 +13,23 @@
    
 {% if meetup_found %}
     <article>
-        <img src="..." class="card-img-top" alt="...">
+        <img src="{{ meetup.image.url}}" style="width: 10%;height: auto;" class="card-img-top" alt="...">
         <br />
+        <div>Location: <span>{{ meetup.location.name }}</span></div>
+        <div>Address: <span>{{ meetup.location.address }}</span></div>
         <br />
-        <p>{{meetup_description}}</p>
+        <p>{{meetup.description}}</p>
+        <br />
+        <h4>Join Us</h4>
+        <form action="{% url 'meetup-detail' meetup.slug %}" method="POST">
+            {% csrf_token %}
+
+            <ul>
+                {{ form.as_ul }}
+            </ul>
+            <button class="btn btn-primary">Register</button>
+        </form>
+        <br />
     </article>
     {% else %}
         <p>No meetup found</p>
