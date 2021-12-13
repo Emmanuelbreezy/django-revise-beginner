@@ -1,0 +1,24 @@
+{% extends 'meetup/base/base.html' %}
+{%load static%}
+
+{% block title %}
+    {{ meetup_title }}
+{% endblock %}
+
+{% block site_css %}{% endblock %}
+
+{% block main_headings %}{% endblock %}
+
+{% block body %}
+   
+{% if meetup_found %}
+    <article>
+        <img src="..." class="card-img-top" alt="...">
+        <br />
+        <br />
+        <p>{{meetup_description}}</p>
+    </article>
+    {% else %}
+        <p>No meetup found</p>
+    {% endif %}
+{% endblock %}
